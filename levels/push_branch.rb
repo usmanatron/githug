@@ -49,7 +49,8 @@ setup do
   Dir.chdir cwd
   `git remote add origin #{tmpdir}/.git`
   `git fetch --quiet origin`
-  `git branch -u origin/master master 2> /dev/null`
+  `git branch -u origin/master master 2> ` +
+    RUBY_PLATFORM =~ /mswin|mingw/ ? `NUL` : `/dev/null`
 
   `git checkout master --quiet` #return to master branch
 end
